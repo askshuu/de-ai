@@ -3,6 +3,7 @@ package com.jun.de_ai;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class UnitViewModel extends ViewModel {
     }
 
     private void loadUsers(){
-
+        DBAdapter dbAdapter = new DBAdapter(this);
+        dbAdapter.open();
+        dbAdapter.getAll();
+        dbAdapter.close();
     }
 }
