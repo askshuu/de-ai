@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- -->
+    <item
+        android:id="@+id/action_favorite"
+        android:title="発見"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="友達"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_myself"
+        android:title="自分"
+        app:showAsAction="ifRoom"/>
+</menu>

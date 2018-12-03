@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">de-ai</string>
+    <string name="pic_des">user image</string>
+    <string name="name_1">ニックネーム</string>
+    <string name="age">年齢</string>
+    <string name="height">身長</string>
+    <string name="interest">興味</string>
 </resources>

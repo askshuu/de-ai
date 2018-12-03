@@ -5,6 +5,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,15 +15,42 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
 
-        int width = displayMetrics.widthPixels;
-        int height = displayMetrics.heightPixels;
+        //toolbarの設定
+        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+    }
 
-        UnitFragment unitFragment = new UnitFragment();
-        fragmentTransaction.replace(android.R.id.content, unitFragment);
-        fragmentTransaction.commit();
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.actions_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_settings:
+                //fragmentを起動
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                UnitFragment unitFragment = new UnitFragment();
+                fragmentTransaction.replace(android.R.id.content, unitFragment);
+                fragmentTransaction.commit();
+                return true;
+
+            case R.id.action_favorite:
+
+                return true;
+
+            default:
+                UserProfileFragment userProfileFragment = new UserProfileFragment();
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(android.R.id.content,userProfileFragment);
+                fragmentTransaction.commit();
+                return super.onOptionsItemSelected(item);
+                    
+        }
     }
 }
